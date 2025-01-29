@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | Budget Manager</title>
-    <link rel="stylesheet" href="/budget_app/assets/css/styles.css">
-    <link rel="stylesheet" href="/budget_app/assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -16,7 +16,7 @@
             <div class="user-welcome">
                 <h1>Welcome, <span id="userGreeting">User</span>!</h1>
                 <p class="subtitle">Track your personal finances effortlessly</p>
-                <a href="/budget_app/index.html" class="btn-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+                <a href="../index.html" class="btn-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
             </div>
             <div class="header-actions">
                 <button class="btn-primary" id="addIncome">
@@ -108,16 +108,29 @@
         </div>
     </div>
 
-    <script src="/budget_app/assets/js/dashboard.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
     <script src="/budget_app/assets/package/dist/chart.js"></script>
     <script>
+    // Get base URL for GitHub Pages
+    const getBaseUrl = () => {
+        const pathSegments = window.location.pathname.split('/');
+        if (window.location.hostname.includes('github.io')) {
+            return '/' + pathSegments[1];
+        }
+        return '';
+    };
+
     // Get username from URL parameters
     const urlParams = new URLSearchParams(window.location.search);
     const username = urlParams.get('name') || localStorage.getItem('username') || 'User';
     document.getElementById('userGreeting').textContent = username;
 
-    // Initialize other dashboard functionality
-    // ... rest of your dashboard JavaScript ...
+    // Update home link if on GitHub Pages
+    const baseUrl = getBaseUrl();
+    const homeLink = document.querySelector('.btn-link');
+    if (baseUrl) {
+        homeLink.href = `${baseUrl}/index.html`;
+    }
     </script>
 </body>
 </html> 

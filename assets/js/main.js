@@ -3,8 +3,19 @@ const customizeModal = document.getElementById('customizeModal');
 const customizeForm = document.getElementById('customizeForm');
 const cancelCustomizeBtn = document.getElementById('cancelCustomize');
 
-// Base URL for GitHub Pages
-const baseUrl = '/budget_app';
+// Get the base URL for GitHub Pages
+const getBaseUrl = () => {
+    const pathSegments = window.location.pathname.split('/');
+    // Check if we're on GitHub Pages
+    if (window.location.hostname.includes('github.io')) {
+        // Return the repository name for GitHub Pages
+        return '/' + pathSegments[1];
+    }
+    // For local development
+    return '';
+};
+
+const baseUrl = getBaseUrl();
 
 // Add event listeners for dashboard selection
 document.querySelectorAll('.btn-select').forEach(button => {
