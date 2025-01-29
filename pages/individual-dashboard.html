@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
     <div class="container">
         <header class="dashboard-header">
             <div class="user-welcome">
@@ -118,6 +122,30 @@
     <script src="../assets/js/individual-dashboard.js"></script>
 
     <script>
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('i');
+    
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        themeIcon.classList.replace('fa-moon', 'fa-sun');
+    }
+
+    // Theme toggle handler
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        
+        // Save theme preference
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        
+        // Update icon
+        themeIcon.classList.toggle('fa-moon', !isDark);
+        themeIcon.classList.toggle('fa-sun', isDark);
+    });
+
     // Get base URL for GitHub Pages
     const getBaseUrl = () => {
         const pathSegments = window.location.pathname.split('/');
