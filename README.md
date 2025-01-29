@@ -1,27 +1,29 @@
-# Dashboard Project
+# Budget Manager Dashboard
 
-A responsive dashboard system with individual and family views.
-
-## Structure
-- Main Dashboard
-- Individual Dashboard
-- Family Dashboard
+A comprehensive budget management system with individual and family dashboard views. Built with modern web technologies to help users track their finances efficiently.
 
 ## Features
-- Responsive design
-- Navigation between dashboard views
-- Card-based layout
-- Mobile-friendly interface
 
-## Setup
-1. Clone the repository
-2. Open any dashboard file in a web browser
-3. Navigate between different dashboard views
+### Individual Dashboard
+- Track personal income and expenses
+- Visual expense distribution charts
+- Transaction history
+- Real-time balance updates
+- Category-based expense tracking
 
-## Development
-- HTML5 for structure
-- CSS3 for styling
-- JavaScript for functionality
+### Family Dashboard
+- Manage family-wide finances
+- Add and track multiple family members
+- Set spending limits for family members
+- Combined family income/expense tracking
+- Family savings goals
 
-## Author
-@Victorralp 
+## Technology Stack
+- HTML5
+- CSS3 (with modern features like Grid and Flexbox)
+- JavaScript (ES6+)
+- Chart.js for data visualization
+- Font Awesome for icons
+- Google Fonts (Poppins)
+
+## Project Structure 

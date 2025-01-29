@@ -56,10 +56,4 @@ function closeCustomizeModal() {
     customizeModal.style.display = 'none';
     customizeForm.reset();
     delete customizeModal.dataset.dashboardType;
-}
-
-// Main JavaScript functionality
-document.addEventListener('DOMContentLoaded', function() {
-    // Add any interactive functionality here
-    console.log('Dashboard loaded');
-}); 
+} 
