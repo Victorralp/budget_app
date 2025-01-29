@@ -22,9 +22,9 @@ customizeForm.addEventListener('submit', (e) => {
     
     // Redirect to appropriate dashboard
     if (dashboardType === 'individual') {
-        window.location.href = '/src/pages/individual-dashboard.html?name=' + encodeURIComponent(username);
+        window.location.href = './pages/individual-dashboard.html?name=' + encodeURIComponent(username);
     } else if (dashboardType === 'family') {
-        window.location.href = '/src/pages/family-dashboard.html?name=' + encodeURIComponent(username);
+        window.location.href = './pages/family-dashboard.html?name=' + encodeURIComponent(username);
     }
 });
 
