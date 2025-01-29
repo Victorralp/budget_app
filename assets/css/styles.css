@@ -515,4 +515,151 @@ body.dark-mode footer a {
 
 body.dark-mode footer a:hover {
     color: var(--dark-success);
+}
+
+/* Family Dashboard Dark Mode Specific Styles */
+body.dark-mode .family-members {
+    background-color: var(--dark-card-bg);
+    border-radius: 10px;
+    padding: var(--spacing-lg);
+    box-shadow: var(--dark-shadow);
+}
+
+body.dark-mode .members-grid {
+    gap: var(--spacing-md);
+}
+
+body.dark-mode .member-card {
+    background-color: var(--dark-modal-bg);
+    border: 1px solid var(--dark-border);
+    box-shadow: var(--dark-shadow);
+}
+
+body.dark-mode .member-card:hover {
+    border-color: var(--dark-success);
+    box-shadow: 0 8px 30px rgba(0, 255, 149, 0.2);
+    transform: translateY(-3px);
+}
+
+body.dark-mode .member-info h3 {
+    color: var(--dark-success);
+}
+
+body.dark-mode .member-role {
+    color: var(--dark-text-secondary);
+}
+
+body.dark-mode .spending-limit {
+    color: var(--dark-text);
+    border-top: 1px solid var(--dark-border);
+}
+
+body.dark-mode .btn-warning {
+    background-color: var(--dark-button-bg);
+    color: #ffd700;
+    border: 1px solid #ffd700;
+}
+
+body.dark-mode .btn-warning:hover {
+    background-color: #ffd700;
+    color: var(--dark-secondary);
+}
+
+body.dark-mode .btn-danger {
+    background-color: var(--dark-button-bg);
+    color: var(--dark-danger);
+    border: 1px solid var(--dark-danger);
+}
+
+body.dark-mode .btn-danger:hover {
+    background-color: var(--dark-danger);
+    color: var(--dark-secondary);
+}
+
+body.dark-mode .role-card {
+    background-color: var(--dark-modal-bg);
+    border: 1px solid var(--dark-border);
+}
+
+body.dark-mode .role-option input:checked + .role-card {
+    border-color: var(--dark-success);
+    box-shadow: 0 0 15px rgba(0, 255, 149, 0.3);
+}
+
+body.dark-mode .role-name {
+    color: var(--dark-text);
+}
+
+body.dark-mode .role-description {
+    color: var(--dark-text-secondary);
+}
+
+body.dark-mode .spending-limit-container {
+    background-color: var(--dark-input-bg);
+    border: 1px solid var(--dark-border);
+}
+
+body.dark-mode .preset-btn {
+    background-color: var(--dark-button-bg);
+    color: var(--dark-text);
+    border: 1px solid var(--dark-border);
+}
+
+body.dark-mode .preset-btn:hover {
+    background-color: var(--dark-accent);
+    border-color: var(--dark-success);
+}
+
+body.dark-mode .preset-btn.active {
+    background-color: var(--dark-success);
+    color: var(--dark-secondary);
+    border-color: var(--dark-success);
+}
+
+body.dark-mode .form-tip {
+    color: var(--dark-text-secondary);
+    border-top: 1px solid var(--dark-border);
+}
+
+body.dark-mode .transactions-list {
+    background-color: var(--dark-card-bg);
+    border: 1px solid var(--dark-border);
+}
+
+body.dark-mode .transaction-item {
+    border-bottom: 1px solid var(--dark-border);
+}
+
+body.dark-mode .transaction-item:hover {
+    background-color: var(--dark-accent);
+}
+
+body.dark-mode .transaction-amount.income {
+    color: var(--dark-success);
+}
+
+body.dark-mode .transaction-amount.expense {
+    color: var(--dark-danger);
+}
+
+body.dark-mode .chart-container {
+    background-color: var(--dark-card-bg);
+    border: 1px solid var(--dark-border);
+    box-shadow: var(--dark-shadow);
+}
+
+/* Chart.js Dark Mode Customization */
+body.dark-mode .chart-container canvas {
+    filter: brightness(1.1) contrast(1.1);
+}
+
+/* Optgroup and Option Dark Mode */
+body.dark-mode optgroup {
+    background-color: var(--dark-input-bg);
+    color: var(--dark-text);
+}
+
+body.dark-mode option {
+    background-color: var(--dark-input-bg);
+    color: var(--dark-text);
 } 
