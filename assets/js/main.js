@@ -3,6 +3,9 @@ const customizeModal = document.getElementById('customizeModal');
 const customizeForm = document.getElementById('customizeForm');
 const cancelCustomizeBtn = document.getElementById('cancelCustomize');
 
+// Base URL for GitHub Pages
+const baseUrl = '/budget_app';
+
 // Add event listeners for dashboard selection
 document.querySelectorAll('.btn-select').forEach(button => {
     button.addEventListener('click', () => {
@@ -22,9 +25,9 @@ customizeForm.addEventListener('submit', (e) => {
     
     // Redirect to appropriate dashboard
     if (dashboardType === 'individual') {
-        window.location.href = '/budget_app/pages/individual-dashboard.html?name=' + encodeURIComponent(username);
+        window.location.href = `${baseUrl}/pages/individual-dashboard.html?name=${encodeURIComponent(username)}`;
     } else if (dashboardType === 'family') {
-        window.location.href = '/budget_app/pages/family-dashboard.html?name=' + encodeURIComponent(username);
+        window.location.href = `${baseUrl}/pages/family-dashboard.html?name=${encodeURIComponent(username)}`;
     }
 });
 
