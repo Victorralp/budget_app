@@ -10,16 +10,22 @@
     --modal-bg: #ffffff;
     --body-bg: #ffffff;
 
-    /* Dark mode colors */
-    --dark-primary: #00b300;
-    --dark-secondary: #1a1a1a;
-    --dark-accent: #2d2d2d;
-    --dark-danger: #ff4444;
-    --dark-text: #ffffff;
-    --dark-border: #404040;
-    --dark-card-bg: #2d2d2d;
-    --dark-modal-bg: #1a1a1a;
-    --dark-body-bg: #121212;
+    /* Dark mode colors - Unique Theme */
+    --dark-primary: #00ff95;
+    --dark-secondary: #0a192f;
+    --dark-accent: #112240;
+    --dark-danger: #ff5d8f;
+    --dark-text: #e6f1ff;
+    --dark-text-secondary: #8892b0;
+    --dark-border: #1d3557;
+    --dark-card-bg: #112240;
+    --dark-modal-bg: #0a192f;
+    --dark-body-bg: #060d1b;
+    --dark-hover: #1d4ed8;
+    --dark-success: #00ff95;
+    --dark-button-bg: #112240;
+    --dark-input-bg: #0a192f;
+    --dark-shadow: 0 4px 20px rgba(0, 255, 149, 0.15);
 
     /* Typography */
     --font-family: 'Poppins', sans-serif;
@@ -346,43 +352,116 @@ footer a:hover {
 body.dark-mode {
     background-color: var(--dark-body-bg);
     color: var(--dark-text);
+    transition: all 0.3s ease;
 }
 
 body.dark-mode .container {
     background-color: var(--dark-body-bg);
 }
 
-body.dark-mode h1,
+body.dark-mode h1 {
+    color: var(--dark-success);
+    text-shadow: 0 0 10px rgba(0, 255, 149, 0.3);
+}
+
 body.dark-mode h2,
 body.dark-mode h3 {
     color: var(--dark-text);
 }
 
+body.dark-mode .subtitle {
+    color: var(--dark-text-secondary);
+}
+
 body.dark-mode .selection-card {
     background-color: var(--dark-card-bg);
     border: 1px solid var(--dark-border);
+    box-shadow: var(--dark-shadow);
+}
+
+body.dark-mode .selection-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 255, 149, 0.2);
+    border-color: var(--dark-success);
+}
+
+body.dark-mode .selection-card i {
+    color: var(--dark-success);
+}
+
+body.dark-mode .btn-select {
+    background-color: var(--dark-button-bg);
+    color: var(--dark-text);
+    border: 1px solid var(--dark-success);
+}
+
+body.dark-mode .btn-select:hover {
+    background-color: var(--dark-success);
+    color: var(--dark-secondary);
 }
 
 body.dark-mode .modal-content {
     background-color: var(--dark-modal-bg);
     border: 1px solid var(--dark-border);
+    box-shadow: var(--dark-shadow);
+}
+
+body.dark-mode .form-group label {
+    color: var(--dark-text);
 }
 
 body.dark-mode .form-group input,
 body.dark-mode .form-group select {
-    background-color: var(--dark-accent);
+    background-color: var(--dark-input-bg);
     color: var(--dark-text);
-    border-color: var(--dark-border);
+    border: 1px solid var(--dark-border);
+}
+
+body.dark-mode .form-group input:focus,
+body.dark-mode .form-group select:focus {
+    border-color: var(--dark-success);
+    box-shadow: 0 0 0 2px rgba(0, 255, 149, 0.2);
+}
+
+body.dark-mode .btn-primary {
+    background: var(--dark-button-bg);
+    color: var(--dark-success);
+    border: 1px solid var(--dark-success);
+}
+
+body.dark-mode .btn-primary:hover {
+    background: var(--dark-success);
+    color: var(--dark-secondary);
 }
 
 body.dark-mode .btn-secondary {
-    background-color: var(--dark-accent);
+    background-color: transparent;
     color: var(--dark-text);
+    border: 1px solid var(--dark-text-secondary);
+}
+
+body.dark-mode .btn-secondary:hover {
+    border-color: var(--dark-text);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 body.dark-mode .card {
     background-color: var(--dark-card-bg);
     border: 1px solid var(--dark-border);
+    box-shadow: var(--dark-shadow);
+}
+
+body.dark-mode .card:hover {
+    border-color: var(--dark-success);
+    box-shadow: 0 8px 30px rgba(0, 255, 149, 0.2);
+}
+
+body.dark-mode .btn-link {
+    color: var(--dark-text-secondary);
+}
+
+body.dark-mode .btn-link:hover {
+    color: var(--dark-success);
 }
 
 /* Theme Toggle Button */
@@ -410,4 +489,30 @@ body.dark-mode .card {
 
 body.dark-mode .theme-toggle:hover {
     background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Animated transitions */
+.theme-toggle,
+.btn-select,
+.selection-card,
+.card,
+.modal-content,
+.form-group input,
+.form-group select,
+.btn-primary,
+.btn-secondary {
+    transition: all 0.3s ease;
+}
+
+/* Footer dark mode */
+body.dark-mode footer {
+    border-top-color: var(--dark-border);
+}
+
+body.dark-mode footer a {
+    color: var(--dark-text-secondary);
+}
+
+body.dark-mode footer a:hover {
+    color: var(--dark-success);
 } 
