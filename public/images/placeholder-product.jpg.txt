@@ -1,0 +1,4 @@
+This is a placeholder file. Replace with actual product images or use Cloudinary URLs.
+For development, you can use placeholder image services like:
+- https://placehold.co/400x300/EEE/31343C?text=Product+Image
+- https://via.placeholder.com/400x300
