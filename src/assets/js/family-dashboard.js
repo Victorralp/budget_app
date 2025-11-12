@@ -6,29 +6,70 @@ function renderTransactions() {
     if (!recentTransactions) return;
     
     const recent = transactions.slice(-5).reverse();
-    recentTransactions.innerHTML = recent.map(transaction => {
+    
+    // Clear existing content
+    recentTransactions.innerHTML = '';
+    
+    recent.forEach(transaction => {
         const member = transaction.memberId ? 
             familyMembers.find(m => m.id === transaction.memberId)?.name : '';
             
-        return `
-            <div class="transaction-item">
-                <div class="transaction-info">
-                    <span class="transaction-description">${transaction.description}</span>
-                    <span class="transaction-date">${formatDate(transaction.date)}</span>
-                    ${member ? `<span class="transaction-member">${member}</span>` : ''}
-                </div>
-                <div class="transaction-details">
-                    <div class="transaction-amount ${transaction.type}">
-                        ${transaction.type === 'income' ? '+' : '-'} ${formatCurrency(transaction.amount)}
-                    </div>
-                    <span class="transaction-category">${transaction.category}</span>
-                    <button class="btn-delete" onclick="deleteTransaction(${transaction.id})">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </div>
-            </div>
-        `;
-    }).join('');
+        // Create transaction item container
+        const transactionItem = document.createElement('div');
+        transactionItem.className = 'transaction-item';
+        
+        // Create transaction info section
+        const transactionInfo = document.createElement('div');
+        transactionInfo.className = 'transaction-info';
+        
+        const description = document.createElement('span');
+        description.className = 'transaction-description';
+        description.textContent = transaction.description; // Safe text content assignment
+        
+        const date = document.createElement('span');
+        date.className = 'transaction-date';
+        date.textContent = formatDate(transaction.date);
+        
+        transactionInfo.appendChild(description);
+        transactionInfo.appendChild(date);
+        
+        // Add member name if exists
+        if (member) {
+            const memberSpan = document.createElement('span');
+            memberSpan.className = 'transaction-member';
+            memberSpan.textContent = member;
+            transactionInfo.appendChild(memberSpan);
+        }
+        
+        // Create transaction details section
+        const transactionDetails = document.createElement('div');
+        transactionDetails.className = 'transaction-details';
+        
+        const amount = document.createElement('div');
+        amount.className = `transaction-amount ${transaction.type}`;
+        amount.textContent = `${transaction.type === 'income' ? '+' : '-'} ${formatCurrency(transaction.amount)}`;
+        
+        const category = document.createElement('span');
+        category.className = 'transaction-category';
+        category.textContent = transaction.category;
+        
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'btn-delete';
+        deleteBtn.onclick = () => deleteTransaction(transaction.id);
+        
+        const icon = document.createElement('i');
+        icon.className = 'fas fa-trash';
+        deleteBtn.appendChild(icon);
+        
+        transactionDetails.appendChild(amount);
+        transactionDetails.appendChild(category);
+        transactionDetails.appendChild(deleteBtn);
+        
+        transactionItem.appendChild(transactionInfo);
+        transactionItem.appendChild(transactionDetails);
+        
+        recentTransactions.appendChild(transactionItem);
+    });
 }
 
 /**
@@ -285,12 +326,22 @@ function addFamilyMember() {
 function updateFamilyMemberSelect() {
     if (!familyMemberSelect) return;
 
-    familyMemberSelect.innerHTML = `
-        <option value="">Select Family Member</option>
-        ${familyMembers.map(member => `
-            <option value="${member.id}">${member.name}</option>
-        `).join('')}
-    `;
+    // Clear existing content
+    familyMemberSelect.innerHTML = '';
+    
+    // Add default option
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.textContent = 'Select Family Member';
+    familyMemberSelect.appendChild(defaultOption);
+    
+    // Add family member options safely
+    familyMembers.forEach(member => {
+        const option = document.createElement('option');
+        option.value = member.id;
+        option.textContent = member.name; // Safe text content assignment
+        familyMemberSelect.appendChild(option);
+    });
 }
 
 /**
@@ -642,12 +693,20 @@ function resetDashboard() {
 function showNotification(message, type = 'info') {
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
-    notification.innerHTML = `
-        <div class="notification-content">
-            <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-info-circle'}"></i>
-            <span>${message}</span>
-        </div>
-    `;
+    
+    // Create notification content safely
+    const notificationContent = document.createElement('div');
+    notificationContent.className = 'notification-content';
+    
+    const icon = document.createElement('i');
+    icon.className = `fas ${type === 'success' ? 'fa-check-circle' : 'fa-info-circle'}`;
+    
+    const messageSpan = document.createElement('span');
+    messageSpan.textContent = message; // Safe text content assignment
+    
+    notificationContent.appendChild(icon);
+    notificationContent.appendChild(messageSpan);
+    notification.appendChild(notificationContent);
     
     document.body.appendChild(notification);
     

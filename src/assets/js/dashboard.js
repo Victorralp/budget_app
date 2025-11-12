@@ -129,23 +129,59 @@ function addTransaction() {
  */
 function renderTransactions() {
     const recentFive = transactions.slice(0, 5);
-    transactionsList.innerHTML = recentFive.map(transaction => `
-        <div class="transaction-item ${transaction.type}">
-            <div class="transaction-info">
-                <span class="transaction-description">${transaction.description}</span>
-                <span class="transaction-date">${formatDate(transaction.date)}</span>
-            </div>
-            <div class="transaction-details">
-                <div class="transaction-amount ${transaction.type}">
-                    ${transaction.type === 'expense' ? '-' : '+'} ${formatCurrency(transaction.amount)}
-                </div>
-                <span class="transaction-category">${transaction.category}</span>
-                <button class="btn-delete" onclick="deleteTransaction(${transaction.id})">
-                    <i class="fas fa-trash"></i>
-                </button>
-            </div>
-        </div>
-    `).join('');
+    
+    // Clear existing content
+    transactionsList.innerHTML = '';
+    
+    recentFive.forEach(transaction => {
+        // Create transaction item container
+        const transactionItem = document.createElement('div');
+        transactionItem.className = `transaction-item ${transaction.type}`;
+        
+        // Create transaction info section
+        const transactionInfo = document.createElement('div');
+        transactionInfo.className = 'transaction-info';
+        
+        const description = document.createElement('span');
+        description.className = 'transaction-description';
+        description.textContent = transaction.description; // Safe text content assignment
+        
+        const date = document.createElement('span');
+        date.className = 'transaction-date';
+        date.textContent = formatDate(transaction.date);
+        
+        transactionInfo.appendChild(description);
+        transactionInfo.appendChild(date);
+        
+        // Create transaction details section
+        const transactionDetails = document.createElement('div');
+        transactionDetails.className = 'transaction-details';
+        
+        const amount = document.createElement('div');
+        amount.className = `transaction-amount ${transaction.type}`;
+        amount.textContent = `${transaction.type === 'expense' ? '-' : '+'} ${formatCurrency(transaction.amount)}`;
+        
+        const category = document.createElement('span');
+        category.className = 'transaction-category';
+        category.textContent = transaction.category;
+        
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'btn-delete';
+        deleteBtn.onclick = () => deleteTransaction(transaction.id);
+        
+        const icon = document.createElement('i');
+        icon.className = 'fas fa-trash';
+        deleteBtn.appendChild(icon);
+        
+        transactionDetails.appendChild(amount);
+        transactionDetails.appendChild(category);
+        transactionDetails.appendChild(deleteBtn);
+        
+        transactionItem.appendChild(transactionInfo);
+        transactionItem.appendChild(transactionDetails);
+        
+        transactionsList.appendChild(transactionItem);
+    });
 }
 
 /**
